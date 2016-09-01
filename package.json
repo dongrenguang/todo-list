@@ -1,0 +1,30 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "A simple application with React and Redux.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dongrenguang/todo-list.git"
+  },
+  "keywords": [
+    "React",
+    "Redux",
+    "todo-list"
+  ],
+  "author": "Dong, Renguang <dongrenguang@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dongrenguang/todo-list/issues"
+  },
+  "homepage": "https://github.com/dongrenguang/todo-list#readme",
+  "dependencies": {
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.3.1"
+  }
+}
