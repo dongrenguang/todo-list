@@ -4,7 +4,7 @@ export default class AddTodo extends Component {
     onAddClick: PropTypes.func.isRequired,
   };
 
-  handleClick(e) {
+  handleClick() {
     const node = this.refs.input;
     const text = node.value.trim();
     this.props.onAddClick(text);
@@ -15,7 +15,7 @@ export default class AddTodo extends Component {
     return (
       <div>
         <input type='text' ref='input' />
-        <button onClick={e => this.handleClick(e)}>
+        <button onClick={() => this.handleClick()}>
           Add
         </button>
       </div>
