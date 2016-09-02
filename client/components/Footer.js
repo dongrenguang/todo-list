@@ -13,7 +13,7 @@ export default class Footer extends Component {
   };
 
   renderFilter(filter, name) {
-    if (this.props.filter === name) {
+    if (this.props.filter === filter) {
       return name;
     }
 

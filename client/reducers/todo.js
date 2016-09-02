@@ -39,14 +39,14 @@ const initialState = {
   todos: [],
   visibilityFilter: SHOW_ALL,
 };
+
 export default function(state = initialState, action) {
-  console.log(state, action);
   switch (action.type) {
     case ADD_TODO:
     case COMPLETE_TODO:
      return Object.assign({}, state, { todos: todos(state.todos, action) });
     case SET_VISIBILITY_FILTER:
-      return Object.assign({}, state, { visibilityFilter: visibilityFilter(state.visibilityFilter) });
+      return Object.assign({}, state, { visibilityFilter: visibilityFilter(state.visibilityFilter, action) });
     default:
       return state;
   }

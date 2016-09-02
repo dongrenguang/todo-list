@@ -24,7 +24,6 @@ export default class TodoListView extends Component {
   };
 
   render() {
-    console.log(this.props.actions.addTodo);
     return (
       <div>
         <AddTodo onAddClick={text => this.props.actions.addTodo(text)} />
