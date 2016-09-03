@@ -3,14 +3,12 @@ import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import App from './components/App';
-import reducers from './reducers';
+import configureStore from './store/configureStore';
+import Root from './containers/Root';
 
-const store = createStore(reducers);
-const rootElement = document.getElementById('root');
+const store = configureStore();
+
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  rootElement
+  <Root store={store} />,
+  document.getElementById('root')
 );

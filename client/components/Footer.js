@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 
-import { VisibilityFilters } from '../constants';
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFilters';
 
 export default class Footer extends Component {
   static propTypes = {
     onFilterChange: PropTypes.func.isRequired,
     filter: PropTypes.oneOf([
-      VisibilityFilters.SHOW_ALL,
-      VisibilityFilters.SHOW_COMPLETED,
-      VisibilityFilters.SHOW_ACTIVE,
+      SHOW_ALL,
+      SHOW_COMPLETED,
+      SHOW_ACTIVE,
     ]),
   };
 
@@ -35,11 +35,11 @@ export default class Footer extends Component {
       <p>
         Show:
         {' '}
-        {this.renderFilter(VisibilityFilters.SHOW_ALL, 'All')}
+        {this.renderFilter(SHOW_ALL, 'All')}
         {', '}
-        {this.renderFilter(VisibilityFilters.SHOW_COMPLETED, 'Completed')}
+        {this.renderFilter(SHOW_COMPLETED, 'Completed')}
         {', '}
-        {this.renderFilter(VisibilityFilters.SHOW_ACTIVE, 'Active')}
+        {this.renderFilter(SHOW_ACTIVE, 'Active')}
         .
       </p>
     );
