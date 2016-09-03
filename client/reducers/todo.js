@@ -1,9 +1,9 @@
+import { combineReducers } from 'redux';
+
 import { ADD_TODO, COMPLETE_TODO, SET_VISIBILITY_FILTER } from '../actions/ActionTypes';
 import { VisibilityFilters } from '../constants';
 
-const { SHOW_ALL } = VisibilityFilters;
-
-function todos(state, action) {
+function todos(state = [], action) {
   switch (action.type) {
     case ADD_TODO:
       return [
@@ -26,7 +26,7 @@ function todos(state, action) {
   }
 }
 
-function visibilityFilter(state, action) {
+function visibilityFilter(state = VisibilityFilters.SHOW_ALL, action) {
   switch (action.type) {
     case SET_VISIBILITY_FILTER:
       return action.filter;
@@ -35,19 +35,7 @@ function visibilityFilter(state, action) {
   }
 }
 
-const initialState = {
-  todos: [],
-  visibilityFilter: SHOW_ALL,
-};
-
-export default function(state = initialState, action) {
-  switch (action.type) {
-    case ADD_TODO:
-    case COMPLETE_TODO:
-     return Object.assign({}, state, { todos: todos(state.todos, action) });
-    case SET_VISIBILITY_FILTER:
-      return Object.assign({}, state, { visibilityFilter: visibilityFilter(state.visibilityFilter, action) });
-    default:
-      return state;
-  }
-}
+export default combineReducers({
+  todos,
+  visibilityFilter,
+});
