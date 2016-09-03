@@ -2,16 +2,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import TodoListView from '../components/TodoListView';
-import { VisibilityFilters } from '../constants';
 import * as TodoActionCreators from '../actions/TodoActionCreators';
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFilters';
 
 function selectTodos(todos, filter) {
   switch (filter) {
-    case VisibilityFilters.SHOW_ALL:
+    case SHOW_ALL:
       return todos;
-    case VisibilityFilters.SHOW_COMPLETED:
+    case SHOW_COMPLETED:
       return todos.filter(todo => todo.completed);
-    case VisibilityFilters.SHOW_ACTIVE:
+    case SHOW_ACTIVE:
       return todos.filter(todo => !todo.completed);
   }
 }

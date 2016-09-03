@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import AddTodo from './AddTodo';
 import Footer from './Footer';
 import TodoList from './TodoList';
-import { VisibilityFilters } from '../constants';
+import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFilters';
 
 export default class TodoListView extends Component {
   static propTypes = {
@@ -12,9 +12,9 @@ export default class TodoListView extends Component {
         completed: PropTypes.bool.isRequired,
       }).isRequired).isRequired,
       visibilityFilter: PropTypes.oneOf([
-        VisibilityFilters.SHOW_ALL,
-        VisibilityFilters.SHOW_COMPLETED,
-        VisibilityFilters.SHOW_ACTIVE,
+        SHOW_ALL,
+        SHOW_COMPLETED,
+        SHOW_ACTIVE,
       ]).isRequired,
       actions: PropTypes.shape({
         addTodo: PropTypes.func.isRequired,

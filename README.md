@@ -12,3 +12,4 @@ $ npm install
 ```shell
 $ npm start
 ```
+Open your browser and visit [http://localhost:8080](http://localhost:8080).

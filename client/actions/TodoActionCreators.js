@@ -1,13 +1,13 @@
-import * as types from './ActionTypes';
+import { ADD_TODO, COMPLETE_TODO, SET_VISIBILITY_FILTER } from '../constants/ActionTypes';
 
 export function addTodo(text) {
-  return { type: types.ADD_TODO, text };
+  return { type: ADD_TODO, text };
 }
 
 export function completeTodo(index) {
-  return { type: types.COMPLETE_TODO, index };
+  return { type: COMPLETE_TODO, index };
 }
 
 export function setVisibilityFilter(filter) {
-  return { type: types.SET_VISIBILITY_FILTER, filter };
+  return { type: SET_VISIBILITY_FILTER, filter };
 }
