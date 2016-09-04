@@ -16,20 +16,26 @@ export default class TodoListView extends Component {
         SHOW_COMPLETED,
         SHOW_ACTIVE,
       ]).isRequired,
+      isFetching: PropTypes.bool.isRequired,
       actions: PropTypes.shape({
         addTodo: PropTypes.func.isRequired,
         completeTodo: PropTypes.func.isRequired,
         setVisibilityFilter: PropTypes.func.isRequired,
+        initTodos: PropTypes.func.isRequired,
       }),
   };
+
+  componentDidMount() {
+    this.props.actions.initTodos();
+  }
 
   render() {
     return (
       <div>
-        <AddTodo onAddClick={text => this.props.actions.addTodo(text)} />
+        <AddTodo onAddClick={text => this.props.actions.addTodo(text)} enabled={!this.props.isFetching} />
         <TodoList
           todos={this.props.visibleTodos}
-          onTodoClick={index => this.props.actions.completeTodo(index)}
+          onTodoClick={id => this.props.actions.completeTodo(id)}
         />
         <Footer
           filter={this.props.visibilityFilter}

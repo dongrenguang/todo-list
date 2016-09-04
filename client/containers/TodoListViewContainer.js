@@ -20,6 +20,7 @@ function mapStateToProps(state) {
   return {
     visibleTodos: selectTodos(state.todo.todos, state.todo.visibilityFilter),
     visibilityFilter: state.todo.visibilityFilter,
+    isFetching: state.todo.isFetching,
   };
 }
 
