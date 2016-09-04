@@ -1,43 +1,49 @@
 import TodoService from '../service/TodoService';
-import { ADD_TODO, COMPLETE_TODO, SET_VISIBILITY_FILTER, REQUEST_TODOS, RECEIVE_TODOS } from '../constants/ActionTypes';
+import * as types from '../constants/ActionTypes';
 
-export async function addTodo(text, completed = false) {
+// Async Action: using redux-promise middleware.
+export async function addTodo(text, completed = false) { // eslint-disable-line react/require-extension
   try {
     const id = await TodoService.getInstance().createTodo({ text, completed });
-    return { type: ADD_TODO, text, completed, id };
+    return { type: types.ADD_TODO, text, completed, id };
   }
   catch(error) {
     console.error(error);
   }
 }
 
-export async function completeTodo(id) {
-  try {
-    await TodoService.getInstance().completeTodo(id);
-    return { type: COMPLETE_TODO, id };
-  }
-  catch(error) {
-    console.error(error);
-  }
+// Async Action: using custom callAPI middleware.
+export function completeTodo(id) {
+  return {
+    types: {
+      requestTypes: types.FETCHING,
+      successTypes: [types.FETCH_SUCCESSFUL, types.COMPLETE_TODO],
+      failureTypes: types.FETCH_FAILED,
+    },
+    callAPI: () => TodoService.getInstance().completeTodo(id),
+    payload: { id },
+  };
 }
 
+// Sync Action.
 export function setVisibilityFilter(filter) {
-  return { type: SET_VISIBILITY_FILTER, filter };
+  return { type: types.SET_VISIBILITY_FILTER, filter };
 }
 
+// Inner Action.
 function requestTodos() {
-  return { type: REQUEST_TODOS };
+  return { type: types.REQUEST_TODOS };
 }
 
+// Inner Action.
 function receiveTodos(todos) {
-  return { type: RECEIVE_TODOS, todos };
+  return { type: types.RECEIVE_TODOS, todos };
 }
 
+// Async Action: using redux-thunk middleware.
 export function initTodos() {
   return dispatch => {
     dispatch(requestTodos());
-    TodoService.getInstance().fetchTodos().then(todos => {
-      dispatch(receiveTodos(todos));
-    });
+    TodoService.getInstance().fetchTodos().then(todos => dispatch(receiveTodos(todos)));
   };
 }
