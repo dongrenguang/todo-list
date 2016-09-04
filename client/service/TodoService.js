@@ -1,43 +1,59 @@
 const instantiateGuardSymbol = Symbol('instantiateGuard');
 const storeTodoSymbol = Symbol('storeTodo');
-const getTodoSymbol = Symbol('getTodo');
-
+const getTodosSymbol = Symbol('getTodo');
 const TODOS_KEY = 'todos';
+let singleton = null;
+
 export default class TodoService {
-  static _instance = null;
-
-  static getInstance() {
-    if (TodoService._instance === null) {
-      TodoService._instance = new TodoService(instantiateGuardSymbol);
-    }
-    return TodoService._instance;
-  }
-
   constructor(instantiateKey) {
     if (instantiateKey !== instantiateGuardSymbol) {
-      throw new Error('The constructor of TodoService is private, please use TodoService.getInstance() to get instance.');
+      throw new Error('Please use TodoService.getInstance() to get instance.');
     }
+  }
+
+  static getInstance() {
+    if (singleton === null) {
+      singleton = new TodoService(instantiateGuardSymbol);
+    }
+    return singleton;
   }
 
   // Suppose createTodo is an asynchronous process, such as requesting remote server.
   async createTodo(todo) {
+    let id;
     try {
-      let todos = await this.fetchTodos();
-      const id = todos.length + 1;
-      todo = { ...todo, id };
-      todos.push(todo);
+      // Deliberately delay.
+      await new Promise(resolve => {
+        setTimeout(() => {
+          resolve();
+        }, 500);
+      });
+
+      const todos = await this[getTodosSymbol]();
+      id = todos.length + 1;
+      const newTodo = { ...todo, id };
+      todos.push(newTodo);
       await this[storeTodoSymbol](todos);
       return id;
     }
     catch(error) {
+      id = -1;
       console.error(error);
     }
+    return id;
   }
 
   // Suppose completeTodo is an asynchronous process, such as requesting remote server.
   async completeTodo(id) {
     try {
-      let todos = await this.fetchTodos();
+      // Deliberately delay.
+      await new Promise(resolve => {
+        setTimeout(() => {
+          resolve();
+        }, 500);
+      });
+
+      const todos = await this[getTodosSymbol]();
       for (let i = 0; i < todos.length; i++) {
         if (todos[i].id === id) {
           todos[i].completed = true;
@@ -56,15 +72,13 @@ export default class TodoService {
     let todos = [];
     try {
       // Deliberately delay.
-      await new Promise((resolve, reject) => {
+      await new Promise(resolve => {
         setTimeout(() => {
           resolve();
-        }, 1000);
+        }, 500);
       });
-      const storedTodos = await this[getTodoSymbol]();
-      if (storedTodos) {
-        todos = storedTodos;
-      }
+
+      todos = await this[getTodosSymbol]();
     }
     catch(error) {
       console.error(error);
@@ -72,9 +86,10 @@ export default class TodoService {
     return todos;
   }
 
-  // private
+  // Private function.
   async [storeTodoSymbol](todos) {
     try {
+      /* eslint no-undef: 1 */
       window.localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
     }
     catch(error) {
@@ -82,13 +97,16 @@ export default class TodoService {
     }
   }
 
-  // private
-  async [getTodoSymbol]() {
+  // Private function.
+  async [getTodosSymbol]() {
+    let result;
     try {
-      return JSON.parse(window.localStorage.getItem(TODOS_KEY));
+      /* eslint no-undef: 1 */
+      result = JSON.parse(window.localStorage.getItem(TODOS_KEY));
     }
     catch(error) {
       console.error(error);
     }
+    return result || [];
   }
 }
