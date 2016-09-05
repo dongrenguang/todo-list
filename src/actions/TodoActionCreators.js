@@ -1,4 +1,4 @@
-import TodoService from '../service/TodoService';
+import TodoService from '../api/TodoService';
 import * as types from '../constants/ActionTypes';
 
 // Async Action: using redux-promise middleware.
