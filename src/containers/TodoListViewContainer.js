@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { createSelector } from 'reselect';
 
 import TodoListView from '../components/TodoListView';
 import * as TodoActionCreators from '../actions/TodoActionCreators';
@@ -17,9 +18,16 @@ function selectTodos(todos, filter) {
   }
 }
 
+const todosSelector = state => state.todo.todos;
+const visibilityFilterSelector = state => state.todo.visibilityFilter;
+const visibleTodosSelector = createSelector(
+  [todosSelector, visibilityFilterSelector],
+  (todos, visibilityFilter) => selectTodos(todos, visibilityFilter)
+);
+
 function mapStateToProps(state) {
   return {
-    visibleTodos: selectTodos(state.todo.todos, state.todo.visibilityFilter),
+    visibleTodos: visibleTodosSelector(state),
     visibilityFilter: state.todo.visibilityFilter,
     isFetching: state.todo.isFetching,
   };
