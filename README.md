@@ -17,9 +17,4 @@ $ npm run build
 ```shell
 $ npm start
 ```
-Open your browser and visit [http://localhost:8080](http://localhost:8080).
-
-## How to run in development mode
-```shell
-$ npm run dev
-```
+Then, open your browser and visit [http://localhost:8080](http://localhost:8080).
