@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-const mainPath = path.resolve("./client");
+const mainPath = path.resolve("./src");
 const buildPath = path.resolve("./public/assets");
 const publicPath = path.resolve("./public");
 
