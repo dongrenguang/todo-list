@@ -50,6 +50,12 @@ export default class TodoListView extends Component {
 const styles = {
   todoListView: {
     position: 'relative',
+    width: 300,
+    height: 400,
+    margin: 'auto',
+    padding: 10,
+    border: '1px solid gray',
+    overflow: 'auto',
   },
   overlay: {
     background: 'rgba(0, 0, 0, 0.2)',
