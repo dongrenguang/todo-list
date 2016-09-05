@@ -41,6 +41,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin([buildPath]),
+    // new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       filename: "vendor.js",

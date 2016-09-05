@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A simple application with React and Redux.",
   "scripts": {
-    "start": "webpack-dev-server",
+    "build": "webpack",
+    "start": "babel-node index.js",
+    "dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./client/**/*.js"
   },
@@ -14,7 +16,10 @@
   "keywords": [
     "React",
     "Redux",
-    "todo-list"
+    "todo-list",
+    "Node.js",
+    "Express",
+    "Server Rendering"
   ],
   "author": "Dong, Renguang <dongrenguang@gmail.com>",
   "license": "MIT",
@@ -23,6 +28,7 @@
   },
   "homepage": "https://github.com/dongrenguang/todo-list#readme",
   "dependencies": {
+    "express": "^4.14.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
@@ -32,6 +38,7 @@
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.5",

@@ -4,7 +4,8 @@ import { render } from 'react-dom';
 import configureStore from './store/configureStore';
 import Root from './containers/Root';
 
-const store = configureStore();
+const initialState = window.__INITIAL_STATE__;  // From server.
+const store = configureStore(initialState);
 
 render(
   <Root store={store} />,
