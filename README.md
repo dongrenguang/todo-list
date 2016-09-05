@@ -1,5 +1,16 @@
 # todo-list
-A simple application with Redux and React.
+A simple server-rendering application with React, Redux and Express.
+
+## Features
+- [React](http://facebook.github.io/react/)
+- [Redux](http://redux.js.org/)
+- [Redux DevTools](https://github.com/gaearon/redux-devtools) (optional)
+- [Node.js](https://nodejs.org/en/)
+- [Express](http://expressjs.com/)
+- [ES6](https://babeljs.io/docs/learn-es2015/) ([ES7](http://babeljs.io/docs/plugins/preset-stage-2/))
+- [Babel](https://babeljs.io/)
+- [Webpack](http://webpack.github.io/)
+- [ESLint](http://eslint.org/)
 
 ## How to install
 ```shell
