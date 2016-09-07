@@ -1,5 +1,5 @@
 # todo-list
-A simple server-rendering application with React, Redux and Express.
+A simple application with Redux, React and Express.
 
 ## Features
 - [React](http://facebook.github.io/react/)
@@ -11,6 +11,7 @@ A simple server-rendering application with React, Redux and Express.
 - [Babel](https://babeljs.io/)
 - [Webpack](http://webpack.github.io/)
 - [ESLint](http://eslint.org/)
+- Server Rendering
 
 ## How to install
 ```shell
