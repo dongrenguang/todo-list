@@ -15,9 +15,10 @@ A simple application with React, Redux and Express.
 - [Babel](https://babeljs.io/)
 - [Webpack](http://webpack.github.io/)
 - [ESLint](http://eslint.org/)
-- Isomorphic(Server Rendering)
+- Isomorphic / Server Rendering
 - Others
   + [Serialize Javascript](https://github.com/yahoo/serialize-javascript)
+  + [Immutable](http://facebook.github.io/immutable-js/)
 
 ## How to install
 ```shell
