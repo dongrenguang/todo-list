@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import pureRender from 'pure-render-decorator';
 
 import Todo from './Todo';
 
+@pureRender
 export default class TodoList extends Component {
   static propTypes = {
     onTodoClick: PropTypes.func.isRequired,

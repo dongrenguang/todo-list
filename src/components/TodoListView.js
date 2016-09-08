@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import pureRender from 'pure-render-decorator';
 
 import AddTodo from './AddTodo';
 import Footer from './Footer';
 import TodoList from './TodoList';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFilters';
 
+@pureRender
 export default class TodoListView extends Component {
   static propTypes = {
     visibleTodos: PropTypes.arrayOf(PropTypes.shape({
