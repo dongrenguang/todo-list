@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import pureRender from 'pure-render-decorator';
 
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFilters';
 
+@pureRender
 export default class Footer extends Component {
   static propTypes = {
     onFilterChange: PropTypes.func.isRequired,

@@ -3,6 +3,7 @@ A simple application with React, Redux and Express.
 
 ## Features
 - [React](http://facebook.github.io/react/)
+  + [Pure Render Decorator](https://github.com/felixgirault/pure-render-decorator)
 - [Redux](http://redux.js.org/)
   + [Reselect](https://github.com/reactjs/reselect)
   + [React Redux](https://github.com/reactjs/react-redux)
@@ -15,10 +16,10 @@ A simple application with React, Redux and Express.
 - [Babel](https://babeljs.io/)
 - [Webpack](http://webpack.github.io/)
 - [ESLint](http://eslint.org/)
-- Isomorphic / Server Rendering
+- [Isomorphic / Server Rendering](http://redux.js.org/docs/recipes/ServerRendering.html)
 - Others
-  + [Serialize Javascript](https://github.com/yahoo/serialize-javascript)
   + [Immutable](http://facebook.github.io/immutable-js/)
+  + [Serialize Javascript](https://github.com/yahoo/serialize-javascript)
 
 ## How to install
 ```shell
