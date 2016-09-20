@@ -6,10 +6,20 @@ export default class TodoList extends PureComponent {
   static propTypes = {
     onTodoClick: PropTypes.func.isRequired,
     todos: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
       text: PropTypes.string.isRequired,
       completed: PropTypes.bool.isRequired,
     }).isRequired).isRequired,
   };
+
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(id) {
+    return this.props.onTodoClick(id);
+  }
 
   render() {
     return (
@@ -19,7 +29,7 @@ export default class TodoList extends PureComponent {
             <Todo
               {...todo}
               key={todo.id}
-              onClick={() => this.props.onTodoClick(todo.id)}
+              onClick={this.onClick}
             />
           )
         }

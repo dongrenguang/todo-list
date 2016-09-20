@@ -12,6 +12,16 @@ export default class Footer extends PureComponent {
     ]),
   };
 
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(e, filter) {
+    e.preventDefault();
+    this.props.onFilterChange(filter);
+  }
+
   renderFilter(filter, name) {
     if (this.props.filter === filter) {
       return name;
@@ -20,10 +30,7 @@ export default class Footer extends PureComponent {
     return (
       <a
         href={'#'}
-        onClick={e => {
-          e.preventDefault();
-          this.props.onFilterChange(filter);
-        }}
+        onClick={e => this.onClick(e, filter)}
       >
         {name}
       </a>

@@ -5,7 +5,12 @@ export default class AddTodo extends PureComponent {
     onAddClick: PropTypes.func.isRequired,
   };
 
-  handleClick() {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
     if (this.input) {
       const text = this.input.value.trim();
       this.props.onAddClick(text).then(() => {
@@ -25,7 +30,7 @@ export default class AddTodo extends PureComponent {
             }
           }}
         />
-        <button onClick={() => this.handleClick()}>Add</button>
+        <button onClick={this.onClick}>Add</button>
       </div>
     );
   }

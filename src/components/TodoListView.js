@@ -25,21 +25,40 @@ export default class TodoListView extends PureComponent {
     }),
   };
 
+  constructor(props) {
+    super(props);
+    this.onAddClick = this.onAddClick.bind(this);
+    this.onTodoClick = this.onTodoClick.bind(this);
+    this.onFilterChange = this.onFilterChange.bind(this);
+  }
+
   componentDidMount() {
     this.props.actions.initTodos();
+  }
+
+  onAddClick(text) {
+    return this.props.actions.addTodo(text);
+  }
+
+  onTodoClick(id) {
+    return this.props.actions.completeTodo(id);
+  }
+
+  onFilterChange(nextFilter) {
+    return this.props.actions.setVisibilityFilter(nextFilter);
   }
 
   render() {
     return (
       <div style={styles.todoListView}>
-        <AddTodo onAddClick={text => this.props.actions.addTodo(text)} />
+        <AddTodo onAddClick={this.onAddClick} />
         <TodoList
           todos={this.props.visibleTodos}
-          onTodoClick={id => this.props.actions.completeTodo(id)}
+          onTodoClick={this.onTodoClick}
         />
         <Footer
           filter={this.props.visibilityFilter}
-          onFilterChange={nextFilter => this.props.actions.setVisibilityFilter(nextFilter)}
+          onFilterChange={this.onFilterChange}
         />
         <div style={{ ...styles.overlay, display: (this.props.isFetching ? 'block' : 'none') }} />
       </div>

@@ -3,7 +3,6 @@ A simple application with React, Redux and Express.
 
 ## Features
 - [React](http://facebook.github.io/react/)
-  + [Pure Render Decorator](https://github.com/felixgirault/pure-render-decorator)
 - [Redux](http://redux.js.org/)
   + [Reselect](https://github.com/reactjs/reselect)
   + [React Redux](https://github.com/reactjs/react-redux)
