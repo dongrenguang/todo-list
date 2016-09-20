@@ -1,10 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import pureRender from 'pure-render-decorator';
+import React, { PropTypes, PureComponent } from 'react';
 
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFilters';
 
-@pureRender
-export default class Footer extends Component {
+export default class Footer extends PureComponent {
   static propTypes = {
     onFilterChange: PropTypes.func.isRequired,
     filter: PropTypes.oneOf([

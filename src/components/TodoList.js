@@ -1,10 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import pureRender from 'pure-render-decorator';
+import React, { PropTypes, PureComponent } from 'react';
 
 import Todo from './Todo';
 
-@pureRender
-export default class TodoList extends Component {
+export default class TodoList extends PureComponent {
   static propTypes = {
     onTodoClick: PropTypes.func.isRequired,
     todos: PropTypes.arrayOf(PropTypes.shape({

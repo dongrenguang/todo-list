@@ -1,8 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import pureRender from 'pure-render-decorator';
+import React, { PropTypes, PureComponent } from 'react';
 
-@pureRender
-export default class AddTodo extends Component {
+export default class AddTodo extends PureComponent {
   static propTypes = {
     onAddClick: PropTypes.func.isRequired,
   };
