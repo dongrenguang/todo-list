@@ -3,19 +3,11 @@ import React, { PropTypes, PureComponent } from 'react';
 import AddTodo from './AddTodo';
 import Footer from './Footer';
 import TodoList from './TodoList';
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFilters';
 
 export default class TodoListView extends PureComponent {
   static propTypes = {
-    visibleTodos: PropTypes.arrayOf(PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      completed: PropTypes.bool.isRequired,
-    }).isRequired).isRequired,
-    visibilityFilter: PropTypes.oneOf([
-      SHOW_ALL,
-      SHOW_COMPLETED,
-      SHOW_ACTIVE,
-    ]).isRequired,
+    visibleTodos: PropTypes.object.isRequired,
+    visibilityFilter: PropTypes.string.isRequired,
     isFetching: PropTypes.bool.isRequired,
     actions: PropTypes.shape({
       addTodo: PropTypes.func.isRequired,

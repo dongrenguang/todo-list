@@ -5,11 +5,7 @@ import Todo from './Todo';
 export default class TodoList extends PureComponent {
   static propTypes = {
     onTodoClick: PropTypes.func.isRequired,
-    todos: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      text: PropTypes.string.isRequired,
-      completed: PropTypes.bool.isRequired,
-    }).isRequired).isRequired,
+    todos: PropTypes.object.isRequired,
   };
 
   constructor(props) {
@@ -27,8 +23,10 @@ export default class TodoList extends PureComponent {
         {
           this.props.todos.map(todo =>
             <Todo
-              {...todo}
-              key={todo.id}
+              key={todo.get('id')}
+              id={todo.get('id')}
+              text={todo.get('text')}
+              completed={todo.get('completed')}
               onClick={this.onClick}
             />
           )
