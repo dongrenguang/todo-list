@@ -1,7 +1,7 @@
+const TODOS_KEY = 'todos';
 const instantiateGuardSymbol = Symbol('instantiateGuard');
 const storeTodoSymbol = Symbol('storeTodo');
 const getTodosSymbol = Symbol('getTodo');
-const TODOS_KEY = 'todos';
 let singleton = null;
 
 export default class TodoService {
@@ -23,7 +23,7 @@ export default class TodoService {
     let id;
     try {
       // Deliberately delay.
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         setTimeout(() => {
           resolve();
         }, 500);
@@ -47,14 +47,14 @@ export default class TodoService {
   async completeTodo(id) {
     try {
       // Deliberately delay.
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         setTimeout(() => {
           resolve();
         }, 500);
       });
 
       const todos = await this[getTodosSymbol]();
-      for (let i = 0; i < todos.length; i++) {
+      for (let i = 0; i < todos.length; i += 1) {
         if (todos[i].id === id) {
           todos[i].completed = true;
           break;
@@ -72,7 +72,7 @@ export default class TodoService {
     let todos = [];
     try {
       // Deliberately delay.
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         setTimeout(() => {
           resolve();
         }, 500);
@@ -89,7 +89,6 @@ export default class TodoService {
   // Private function.
   async [storeTodoSymbol](todos) {
     try {
-      /* eslint no-undef: 1 */
       window.localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
     }
     catch(error) {
@@ -101,7 +100,6 @@ export default class TodoService {
   async [getTodosSymbol]() {
     let result;
     try {
-      /* eslint no-undef: 1 */
       result = JSON.parse(window.localStorage.getItem(TODOS_KEY));
     }
     catch(error) {

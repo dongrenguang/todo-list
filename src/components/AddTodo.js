@@ -24,7 +24,7 @@ export default class AddTodo extends PureComponent {
       <div>
         <input
           type={'text'}
-          ref={instance => {
+          ref={(instance) => {
             if (instance) {
               this.input = instance;
             }

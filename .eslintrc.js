@@ -69,6 +69,9 @@ module.exports = {
       "error",
       "always"
     ],
+    "arrow-parens": 1,
+    "new-cap": 1,
+    "no-undef": 1,
 
     /* eslint-plugin-react */
     "react/jsx-indent": [
@@ -83,11 +86,13 @@ module.exports = {
     "react/sort-comp": 1,
     "react/jsx-filename-extension": 0,
     "react/prefer-stateless-function": 1,
+    "react/forbid-prop-types": 1,
 
     /* eslint-plugin-import */
     "import/no-unresolved": 1,
 
     /* eslint-plugin-jsx-a11y */
     "jsx-a11y/href-no-hash": 1,
+    "jsx-a11y/no-static-element-interactions": 1,
   }
 };
