@@ -1,5 +1,5 @@
 /* eslint no-console: 1 */
-export default store => next => action => {
+export default store => next => (action) => {
   console.group(action.type);
   console.info('dispatching', action);
   const result = next(action);

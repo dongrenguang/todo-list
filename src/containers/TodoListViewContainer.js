@@ -18,8 +18,8 @@ function selectTodos(todoList, filter) {
   }
 }
 
-const todosSelector = state => state.todos.todoList;
-const visibilityFilterSelector = state => state.todos.visibilityFilter;
+const todosSelector = state => state.getIn(['todos', 'todoList']);
+const visibilityFilterSelector = state => state.getIn(['todos', 'visibilityFilter']);
 const visibleTodosSelector = createSelector(
   [todosSelector, visibilityFilterSelector],
   (todoList, visibilityFilter) => selectTodos(todoList, visibilityFilter)
@@ -28,8 +28,8 @@ const visibleTodosSelector = createSelector(
 function mapStateToProps(state) {
   return {
     visibleTodos: visibleTodosSelector(state),
-    visibilityFilter: state.todos.visibilityFilter,
-    isFetching: state.todos.isFetching,
+    visibilityFilter: state.getIn(['todos', 'visibilityFilter']),
+    isFetching: state.getIn(['todos', 'isFetching']),
   };
 }
 
