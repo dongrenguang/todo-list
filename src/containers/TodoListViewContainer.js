@@ -6,30 +6,30 @@ import TodoListView from '../components/TodoListView';
 import * as TodoActionCreators from '../actions/TodoActionCreators';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFilters';
 
-function selectTodos(todos, filter) {
+function selectTodos(todoList, filter) {
   switch (filter) {
     case SHOW_COMPLETED:
-      return todos.filter(todo => todo.get('completed'));
+      return todoList.filter(todo => todo.get('completed'));
     case SHOW_ACTIVE:
-      return todos.filter(todo => !todo.get('completed'));
+      return todoList.filter(todo => !todo.get('completed'));
     case SHOW_ALL:
     default:
-      return todos;
+      return todoList;
   }
 }
 
-const todosSelector = state => state.todoList.todos;
-const visibilityFilterSelector = state => state.todoList.visibilityFilter;
+const todosSelector = state => state.todos.todoList;
+const visibilityFilterSelector = state => state.todos.visibilityFilter;
 const visibleTodosSelector = createSelector(
   [todosSelector, visibilityFilterSelector],
-  (todos, visibilityFilter) => selectTodos(todos, visibilityFilter)
+  (todoList, visibilityFilter) => selectTodos(todoList, visibilityFilter)
 );
 
 function mapStateToProps(state) {
   return {
     visibleTodos: visibleTodosSelector(state),
-    visibilityFilter: state.todoList.visibilityFilter,
-    isFetching: state.todoList.isFetching,
+    visibilityFilter: state.todos.visibilityFilter,
+    isFetching: state.todos.isFetching,
   };
 }
 

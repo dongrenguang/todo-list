@@ -4,7 +4,7 @@ import Immutable, { List, Map } from 'immutable';
 import * as types from '../constants/ActionTypes';
 import { SHOW_ALL } from '../constants/VisibilityFilters';
 
-function todos(state = List(), action) {
+function todoList(state = List(), action) {
   switch (action.type) {
     case types.ADD_TODO:
         return state.push(Map({
@@ -54,7 +54,7 @@ function isFetching(state = false, action) {
 }
 
 export default combineReducers({
-  todos,
+  todoList,
   visibilityFilter,
   isFetching,
 });
