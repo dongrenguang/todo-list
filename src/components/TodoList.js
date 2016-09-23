@@ -1,17 +1,21 @@
-import React, { Component, PropTypes } from 'react';
-import pureRender from 'pure-render-decorator';
+import React, { PropTypes, PureComponent } from 'react';
 
 import Todo from './Todo';
 
-@pureRender
-export default class TodoList extends Component {
+export default class TodoList extends PureComponent {
   static propTypes = {
     onTodoClick: PropTypes.func.isRequired,
-    todos: PropTypes.arrayOf(PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      completed: PropTypes.bool.isRequired,
-    }).isRequired).isRequired,
+    todos: PropTypes.object.isRequired,
   };
+
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(id) {
+    return this.props.onTodoClick(id);
+  }
 
   render() {
     return (
@@ -19,9 +23,11 @@ export default class TodoList extends Component {
         {
           this.props.todos.map(todo =>
             <Todo
-              {...todo}
-              key={todo.id}
-              onClick={() => this.props.onTodoClick(todo.id)}
+              key={todo.get('id')}
+              id={todo.get('id')}
+              text={todo.get('text')}
+              completed={todo.get('completed')}
+              onClick={this.onClick}
             />
           )
         }

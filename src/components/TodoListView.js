@@ -1,23 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import pureRender from 'pure-render-decorator';
+import React, { PropTypes, PureComponent } from 'react';
 
 import AddTodo from './AddTodo';
 import Footer from './Footer';
 import TodoList from './TodoList';
-import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFilters';
 
-@pureRender
-export default class TodoListView extends Component {
+export default class TodoListView extends PureComponent {
   static propTypes = {
-    visibleTodos: PropTypes.arrayOf(PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      completed: PropTypes.bool.isRequired,
-    }).isRequired).isRequired,
-    visibilityFilter: PropTypes.oneOf([
-      SHOW_ALL,
-      SHOW_COMPLETED,
-      SHOW_ACTIVE,
-    ]).isRequired,
+    visibleTodos: PropTypes.object.isRequired,
+    visibilityFilter: PropTypes.string.isRequired,
     isFetching: PropTypes.bool.isRequired,
     actions: PropTypes.shape({
       addTodo: PropTypes.func.isRequired,
@@ -27,21 +17,40 @@ export default class TodoListView extends Component {
     }),
   };
 
+  constructor(props) {
+    super(props);
+    this.onAddClick = this.onAddClick.bind(this);
+    this.onTodoClick = this.onTodoClick.bind(this);
+    this.onFilterChange = this.onFilterChange.bind(this);
+  }
+
   componentDidMount() {
     this.props.actions.initTodos();
+  }
+
+  onAddClick(text) {
+    return this.props.actions.addTodo(text);
+  }
+
+  onTodoClick(id) {
+    return this.props.actions.completeTodo(id);
+  }
+
+  onFilterChange(nextFilter) {
+    return this.props.actions.setVisibilityFilter(nextFilter);
   }
 
   render() {
     return (
       <div style={styles.todoListView}>
-        <AddTodo onAddClick={text => this.props.actions.addTodo(text)} />
+        <AddTodo onAddClick={this.onAddClick} />
         <TodoList
           todos={this.props.visibleTodos}
-          onTodoClick={id => this.props.actions.completeTodo(id)}
+          onTodoClick={this.onTodoClick}
         />
         <Footer
           filter={this.props.visibilityFilter}
-          onFilterChange={nextFilter => this.props.actions.setVisibilityFilter(nextFilter)}
+          onFilterChange={this.onFilterChange}
         />
         <div style={{ ...styles.overlay, display: (this.props.isFetching ? 'block' : 'none') }} />
       </div>

@@ -1,32 +1,27 @@
 import { combineReducers } from 'redux';
+import Immutable, { List, Map } from 'immutable';
 
 import * as types from '../constants/ActionTypes';
 import { SHOW_ALL } from '../constants/VisibilityFilters';
 
-function todos(state = [], action) {
+function todos(state = List(), action) {
   switch (action.type) {
     case types.ADD_TODO:
-      return [
-        ...state,
-        {
+        return state.push(Map({
           text: action.text,
           completed: action.completed,
           id: action.id,
-        },
-      ];
+        }));
     case types.COMPLETE_TODO: {
-      const index = state.findIndex(todo => todo.id === action.id);
-      return [
-        ...state.slice(0, index),
-        { ...state[index], completed: true },
-        ...state.slice(index + 1),
-      ];
+      return state.map(todo => {
+        if (todo.get('id') === action.id) {
+          return todo.update('completed', value => !value);
+        }
+        return todo;
+      });
     }
     case types.RECEIVE_TODOS:
-      return [
-        ...state,
-        ...action.todos,
-      ];
+      return Immutable.fromJS(action.todos);
     default:
       return state;
   }

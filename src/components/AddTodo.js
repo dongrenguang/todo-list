@@ -1,13 +1,16 @@
-import React, { Component, PropTypes } from 'react';
-import pureRender from 'pure-render-decorator';
+import React, { PropTypes, PureComponent } from 'react';
 
-@pureRender
-export default class AddTodo extends Component {
+export default class AddTodo extends PureComponent {
   static propTypes = {
     onAddClick: PropTypes.func.isRequired,
   };
 
-  handleClick() {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
     if (this.input) {
       const text = this.input.value.trim();
       this.props.onAddClick(text).then(() => {
@@ -27,7 +30,7 @@ export default class AddTodo extends Component {
             }
           }}
         />
-        <button onClick={() => this.handleClick()}>Add</button>
+        <button onClick={this.onClick}>Add</button>
       </div>
     );
   }

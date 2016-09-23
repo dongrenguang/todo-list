@@ -1,8 +1,4 @@
-import serialize from 'serialize-javascript';
-
-export default function (html, initialState) {
-  return (`
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
       <meta charset="UTF-8">
@@ -18,11 +14,6 @@ export default function (html, initialState) {
     </head>
     <body>
       <div id="root">${html}</div>
-      <script>
-        window.__INITIAL_STATE__ = ${serialize(initialState)};
-      </script>
       <script src="assets/index.js" charset="utf-8"></script>
     </body>
     </html>
-  `);
-}

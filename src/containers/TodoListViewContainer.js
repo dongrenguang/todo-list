@@ -9,17 +9,17 @@ import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFi
 function selectTodos(todos, filter) {
   switch (filter) {
     case SHOW_COMPLETED:
-      return todos.filter(todo => todo.completed);
+      return todos.filter(todo => todo.get('completed'));
     case SHOW_ACTIVE:
-      return todos.filter(todo => !todo.completed);
+      return todos.filter(todo => !todo.get('completed'));
     case SHOW_ALL:
     default:
       return todos;
   }
 }
 
-const todosSelector = state => state.todo.todos;
-const visibilityFilterSelector = state => state.todo.visibilityFilter;
+const todosSelector = state => state.todoList.todos;
+const visibilityFilterSelector = state => state.todoList.visibilityFilter;
 const visibleTodosSelector = createSelector(
   [todosSelector, visibilityFilterSelector],
   (todos, visibilityFilter) => selectTodos(todos, visibilityFilter)
@@ -28,8 +28,8 @@ const visibleTodosSelector = createSelector(
 function mapStateToProps(state) {
   return {
     visibleTodos: visibleTodosSelector(state),
-    visibilityFilter: state.todo.visibilityFilter,
-    isFetching: state.todo.isFetching,
+    visibilityFilter: state.todoList.visibilityFilter,
+    isFetching: state.todoList.isFetching,
   };
 }
 

@@ -1,10 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import pureRender from 'pure-render-decorator';
+import React, { PropTypes, PureComponent } from 'react';
 
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/VisibilityFilters';
 
-@pureRender
-export default class Footer extends Component {
+export default class Footer extends PureComponent {
   static propTypes = {
     onFilterChange: PropTypes.func.isRequired,
     filter: PropTypes.oneOf([
@@ -14,6 +12,16 @@ export default class Footer extends Component {
     ]),
   };
 
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(e, filter) {
+    e.preventDefault();
+    this.props.onFilterChange(filter);
+  }
+
   renderFilter(filter, name) {
     if (this.props.filter === filter) {
       return name;
@@ -22,10 +30,7 @@ export default class Footer extends Component {
     return (
       <a
         href={'#'}
-        onClick={e => {
-          e.preventDefault();
-          this.props.onFilterChange(filter);
-        }}
+        onClick={e => this.onClick(e, filter)}
       >
         {name}
       </a>
