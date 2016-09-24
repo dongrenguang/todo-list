@@ -12,7 +12,7 @@ function todoList(state = List(), action) {
         completed: action.completed,
         id: action.id,
       }));
-    case types.COMPLETE_TODO:
+    case types.TOGGLE_TODO:
       return state.map((todo) => {
         if (todo.get('id') === action.id) {
           return todo.update('completed', value => !value);

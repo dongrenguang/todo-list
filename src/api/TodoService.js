@@ -43,8 +43,8 @@ export default class TodoService {
     return id;
   }
 
-  // Suppose completeTodo is an asynchronous process, such as requesting remote server.
-  async completeTodo(id) {
+  // Suppose toggleTodo is an asynchronous process, such as requesting remote server.
+  async toggleTodo(id) {
     try {
       // Deliberately delay.
       await new Promise((resolve) => {
@@ -56,7 +56,7 @@ export default class TodoService {
       const todos = await this[getTodosSymbol]();
       for (let i = 0; i < todos.length; i += 1) {
         if (todos[i].id === id) {
-          todos[i].completed = true;
+          todos[i].completed = !todos[i].completed;
           break;
         }
       }

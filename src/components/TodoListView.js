@@ -11,7 +11,7 @@ export default class TodoListView extends PureComponent {
     isFetching: PropTypes.bool.isRequired,
     actions: PropTypes.shape({
       addTodo: PropTypes.func.isRequired,
-      completeTodo: PropTypes.func.isRequired,
+      toggleTodo: PropTypes.func.isRequired,
       setVisibilityFilter: PropTypes.func.isRequired,
       initTodos: PropTypes.func.isRequired,
     }),
@@ -33,7 +33,7 @@ export default class TodoListView extends PureComponent {
   }
 
   onTodoClick(id) {
-    return this.props.actions.completeTodo(id);
+    return this.props.actions.toggleTodo(id);
   }
 
   onFilterChange(nextFilter) {

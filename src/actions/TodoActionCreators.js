@@ -13,14 +13,14 @@ export async function addTodo(text, completed = false) { // eslint-disable-line 
 }
 
 // Async Action: using custom callAPI middleware.
-export function completeTodo(id) {
+export function toggleTodo(id) {
   return {
     types: {
       requestTypes: types.FETCHING,
-      successTypes: [types.FETCH_SUCCESSFUL, types.COMPLETE_TODO],
+      successTypes: [types.FETCH_SUCCESSFUL, types.TOGGLE_TODO],
       failureTypes: types.FETCH_FAILED,
     },
-    callAPI: () => TodoService.getInstance().completeTodo(id),
+    callAPI: () => TodoService.getInstance().toggleTodo(id),
     payload: { id },
   };
 }
