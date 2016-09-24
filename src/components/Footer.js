@@ -27,7 +27,12 @@ export default class Footer extends PureComponent {
     }
 
     return (
-      <a onClick={() => this.onClick(filter)}>{name}</a>
+      <a
+        href={"#"}
+        onClick={() => this.onClick(filter)}
+      >
+        {name}
+      </a>
     );
   }
 
