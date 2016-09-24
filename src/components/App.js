@@ -4,7 +4,7 @@ import AddTodo from './AddTodo';
 import Footer from './Footer';
 import TodoList from './TodoList';
 
-export default class TodoListView extends PureComponent {
+export default class App extends PureComponent {
   static propTypes = {
     visibleTodos: PropTypes.object.isRequired,
     visibilityFilter: PropTypes.string.isRequired,
