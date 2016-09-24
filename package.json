@@ -1,7 +1,7 @@
 {
   "name": "todo-list",
   "version": "1.0.0",
-  "description": "A simple application with React and Redux.",
+  "description": "A simple application with React, Redux, Immutable and Express for isomorphic.",
   "scripts": {
     "build": "webpack",
     "start": "babel-node index.js",
@@ -16,10 +16,13 @@
   "keywords": [
     "React",
     "Redux",
-    "todo-list",
+    "Immutable",
+    "Todo List",
+    "Isomorphic",
+    "Server Rendering",
     "Node.js",
     "Express",
-    "Server Rendering"
+    "Demo"
   ],
   "author": "Dong, Renguang <dongrenguang@gmail.com>",
   "license": "MIT",

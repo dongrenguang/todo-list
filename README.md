@@ -1,5 +1,5 @@
 # Todo List
-A simple application with React, Redux and Express.
+A simple application with React, Redux, Immutable and Express for isomorphic.
 
 ## Features
 - [React](http://facebook.github.io/react/)
