@@ -4,14 +4,14 @@ import AddTodo from './AddTodo';
 import Footer from './Footer';
 import TodoList from './TodoList';
 
-export default class TodoListView extends PureComponent {
+export default class App extends PureComponent {
   static propTypes = {
     visibleTodos: PropTypes.object.isRequired,
     visibilityFilter: PropTypes.string.isRequired,
     isFetching: PropTypes.bool.isRequired,
     actions: PropTypes.shape({
       addTodo: PropTypes.func.isRequired,
-      completeTodo: PropTypes.func.isRequired,
+      toggleTodo: PropTypes.func.isRequired,
       setVisibilityFilter: PropTypes.func.isRequired,
       initTodos: PropTypes.func.isRequired,
     }),
@@ -33,7 +33,7 @@ export default class TodoListView extends PureComponent {
   }
 
   onTodoClick(id) {
-    return this.props.actions.completeTodo(id);
+    return this.props.actions.toggleTodo(id);
   }
 
   onFilterChange(nextFilter) {

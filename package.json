@@ -1,7 +1,7 @@
 {
   "name": "todo-list",
   "version": "1.0.0",
-  "description": "A simple application with React, Redux, Immutable and Express for isomorphic.",
+  "description": "A simple application with React, Redux, Immutable and Express, supporting for isomorphic.",
   "scripts": {
     "build": "webpack",
     "start": "babel-node index.js",
@@ -20,6 +20,7 @@
     "Todo List",
     "Isomorphic",
     "Server Rendering",
+    "React Router",
     "Node.js",
     "Express",
     "Demo"
@@ -36,6 +37,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
     "redux": "^3.6.0",
     "redux-immutable": "^3.0.8",
     "redux-promise": "^0.5.3",

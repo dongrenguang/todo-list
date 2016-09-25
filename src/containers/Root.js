@@ -1,7 +1,7 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { Provider } from 'react-redux';
 
-import TodoListViewContainer from '../containers/TodoListViewContainer';
+import AppContainer from '../containers/AppContainer';
 
 export default class Root extends PureComponent {
   static propTypes = {
@@ -11,7 +11,7 @@ export default class Root extends PureComponent {
   render() {
     return (
       <Provider store={this.props.store}>
-        <TodoListViewContainer />
+        <AppContainer />
       </Provider>
     );
   }
